@@ -1,3 +1,31 @@
 *, body{
     font-family: 'Lato', sans-serif;
 }
+
+.navbar-brand{
+    background-image: url(https://i.postimg.cc/y8qRNc9J/dani-logo.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    height: 2.5rem;
+    width: 8rem;
+}
+
+.bg-dark {
+    background-color: #4ad1b1 !important;
+}
+
+.bg-primary {
+    background-color: #F2DFF1 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #f24d9a;
+    border-color: #f24d9a;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #7d2181;
+    border-color: #7d2181;
+}
