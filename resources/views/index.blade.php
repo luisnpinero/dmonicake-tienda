@@ -6,6 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="Luis Piñero">
         <title>DMonicake Fit&Fat</title>
+        <link rel="icon" href="https://i.postimg.cc/Gtrdvvrj/2.png" type="image/png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
