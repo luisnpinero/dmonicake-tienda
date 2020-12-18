@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#">Acerca de</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link" href="#">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
@@ -51,7 +51,7 @@
                         </li>
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrate</a>                            </li>
+                                <a class="nav-link" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrate</a></li>
                             </li>
                             @endif
                         @endauth
@@ -67,7 +67,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-lg-12">
                 <h1 class="display-4 text-dark mt-5 mb-2">DMonicake Cocina Fit & Fat</h1>
-                <p class="lead mb-5 text-dark-50">¡No dejes para mañana lo que puedes hacer hoy!</p>
+                <p class="lead mb-5 text-dark-50">¡No dejes para mañana lo que puedes cocinar hoy!</p>
                 </div>
             </div>
             </div>
@@ -99,7 +99,7 @@
             <p class="card-text">Haz click para comprar</p>
       </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
+        <a href="#" class="btn btn-primary">Añadir a Carrito</a>
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@
         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
       </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
+        <a href="#" class="btn btn-primary">Añadir a Carrito</a>
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
       </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
+        <a href="#" class="btn btn-primary">Añadir a Carrito</a>
       </div>
     </div>
   </div>

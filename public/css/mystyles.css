@@ -3,9 +3,9 @@
 }
 
 .navbar-brand{
-    background-image: url(https://i.postimg.cc/y8qRNc9J/dani-logo.png);
+    background-image: url(https://i.postimg.cc/T2DZrQGK/dani-logo.png);
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
     height: 2.5rem;
     width: 8rem;
 }
