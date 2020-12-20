@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('password');
             $table->rememberToken();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
             $table->boolean('status')->default(true);
+            $table->integer('modified_by')->nullable()->default('1');
         });
     }
 
