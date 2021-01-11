@@ -2,7 +2,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <!-- <x-jet-authentication-card-logo /> -->
+            <img src="https://i.postimg.cc/fT8D03Px/1.png" alt="" height="150rem" width="150rem">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -14,17 +15,17 @@
 
             <div>
                 <x-jet-label for="first_name" value="{{ __('Nombres') }}" />
-                <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+                <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="off" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="last_name" value="{{ __('Apellidos') }}" />
-                <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+                <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="off" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="off"/>
             </div>
 
             <div class="mt-4">
@@ -43,8 +44,8 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="address" value="{{ __('gugle') }}" />
-                <x-jet-input type="text" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location" required />
+                <x-jet-label for="address" value="{{ __('Dirección') }}" />
+                <x-jet-input type="text" class="block mt-1 w-full" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location" required />
             </div>
 
             <div class="mt-4">
@@ -78,17 +79,17 @@
                 <script>
                     google.maps.event.addDomListener(window, 'load', initialize);
                     function initialize() {
-                    var input = document.getElementById('autocomplete');
-                    var autocomplete = new google.maps.places.Autocomplete(input);
-                    autocomplete.addListener('place_changed', function() {
-                    var place = autocomplete.getPlace();
-                    $('#latitude').val(place.geometry['location'].lat());
-                    $('#longitude').val(place.geometry['location'].lng());
-                    // --------- show lat and long ---------------
-                    $("#lat_area").removeClass("d-none");
-                    $("#long_area").removeClass("d-none");
-                });
-            }
+                        var input = document.getElementById('autocomplete');
+                        var autocomplete = new google.maps.places.Autocomplete(input);
+                        autocomplete.addListener('place_changed', function() {
+                            var place = autocomplete.getPlace();
+                            $('#latitude').val(place.geometry['location'].lat());
+                            $('#longitude').val(place.geometry['location'].lng());
+                            // --------- show lat and long ---------------
+                            $("#lat_area").removeClass("d-none");
+                            $("#long_area").removeClass("d-none");
+                            });
+                    }
             </script>
         </form>
     </x-jet-authentication-card>
