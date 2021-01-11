@@ -40,12 +40,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="address" value="{{ __('Dirección') }}" />
-                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="address" value="{{ __('Dirección') }}" />
-                <x-jet-input type="text" class="block mt-1 w-full" name="autocomplete" id="autocomplete" class="form-control" placeholder="Select Location" required />
+                <x-jet-input type="text" class="block mt-1 w-full" name="address" id="address" class="form-control" :value="old('address')" required />
             </div>
 
             <div class="mt-4">
@@ -79,10 +74,10 @@
                 <script>
                     google.maps.event.addDomListener(window, 'load', initialize);
                     function initialize() {
-                        var input = document.getElementById('autocomplete');
-                        var autocomplete = new google.maps.places.Autocomplete(input);
-                        autocomplete.addListener('place_changed', function() {
-                            var place = autocomplete.getPlace();
+                        var input = document.getElementById('address');
+                        var address = new google.maps.places.Autocomplete(input);
+                        address.addListener('place_changed', function() {
+                            var place = address.getPlace();
                             $('#latitude').val(place.geometry['location'].lat());
                             $('#longitude').val(place.geometry['location'].lng());
                             // --------- show lat and long ---------------

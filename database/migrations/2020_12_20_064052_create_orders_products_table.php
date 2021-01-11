@@ -14,6 +14,7 @@ class CreateOrdersProductsTable extends Migration
     public function up()
     {
         Schema::create('orders_products', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('product_id')->constrained('products');
             $table->integer('quantity');

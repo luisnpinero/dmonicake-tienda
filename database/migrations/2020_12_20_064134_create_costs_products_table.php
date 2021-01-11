@@ -14,6 +14,7 @@ class CreateCostsProductsTable extends Migration
     public function up()
     {
         Schema::create('costs_products', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('cost_id')->constrained('costs');
             $table->foreignId('product_id')->constrained('products');
         });
