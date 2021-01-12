@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->integer('phone_number');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('address');
+            $table->foreignId('address_id')->constrained('addresses');
+            $table->foreignId('role_id')->constrained('roles');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
