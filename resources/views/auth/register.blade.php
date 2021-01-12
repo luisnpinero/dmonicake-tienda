@@ -75,7 +75,11 @@
                     google.maps.event.addDomListener(window, 'load', initialize);
                     function initialize() {
                         var input = document.getElementById('address');
-                        var address = new google.maps.places.Autocomplete(input);
+                        var options = {
+                            // types: ["(cities)"],
+                            componentRestrictions: {country: "ve"}
+                        };
+                        var address = new google.maps.places.Autocomplete(input, options);
                         address.addListener('place_changed', function() {
                             var place = address.getPlace();
                             $('#latitude').val(place.geometry['location'].lat());

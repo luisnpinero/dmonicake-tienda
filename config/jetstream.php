@@ -29,9 +29,11 @@ return [
     */
 
     'features' => [
-        // Features::profilePhotos(),
-        // Features::api(),
-        // Features::teams(),
+        // Features::termsAndPrivacyPolicy(),
+        Features::profilePhotos(),
+        Features::api(),
+        Features::teams(),
+        // Features::accountDeletion(),
     ],
 
 ];
