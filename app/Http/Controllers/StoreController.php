@@ -4,25 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class StoreController extends Controller
 {
     public function index(){
-        return "vista dashboard products por controlador";
+        return "vista store";
         // return view('index');
     }
 
     public function create(){
-        return "vista dashboard products create";
+        return "vista dashboard user create";
         // return view('index');
     }
 
-    public function view($product){
-        return "vista dashboard products view {$product}";
+    public function view($user){
+        return "vista dashboard user view {$user}";
         // return view('index');
     }
 
-    public function edit($product){
-        return "vista dashboard products {$product}";
+    public function edit($user){
+        return "vista dashboard user edit {$user}";
         // return view('index');
     }
 
@@ -30,11 +30,11 @@ class ProductController extends Controller
         // return view('index');
     }
 
-    public function update($product){
+    public function update($user){
         // return view('index')
     }
 
-    public function destroy($product){
+    public function destroy($user){
         //
     }
 }

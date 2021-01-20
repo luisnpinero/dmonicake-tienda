@@ -34,7 +34,7 @@ class CurrencyController extends Controller
         // return view('index')
     }
 
-    public function delete($currency){
+    public function destroy($currency){
         //
     }
 }

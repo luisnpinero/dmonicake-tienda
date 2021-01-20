@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cost extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'cost',
+        'modified_by',
+    ];
 }

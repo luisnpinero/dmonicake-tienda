@@ -34,7 +34,7 @@ class CategoryController extends Controller
         // return view('index')
     }
 
-    public function delete($category){
+    public function destroy($category){
         //
     }
 }

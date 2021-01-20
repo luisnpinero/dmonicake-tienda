@@ -28,37 +28,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 //vistas del dashboard usuarios
-Route::get('dashboard/user', function () {
-    return "vista dashboard user";
-    // return view('index');
-})->name('dashboard.user');
-
-Route::get('dashboard/user/create', function () {
-    return "vista dashboard user create";
-    // return view('index');
-})->name('dashboard.user.create');
-
-Route::get('dashboard/user/{user}', function ($user) {
-    return "vista dashboard user view {$user}";
-    // return view('index');
-})->name('dashboard.user.view');
-
-Route::get('dashboard/user/{user}/edit', function ($user) {
-    return "vista dashboard user edit {$user}";
-    // return view('index');
-})->name('dashboard.user.edit');
-
-Route::post('dashboard/user', function () {
-    // return view('index');
-})->name('dashboard.users.store');
-
-Route::match(['put', 'patch'], 'dashboard/user/{user}', function ($user){
-    //
-})->name('dashboard.users.update');
-
-Route::delete('dashboard/user/{user}', function ($user){
-    //
-})->name('dashboard.users.delete');
+Route::get('dashboard/user', 'UserController@index')->name('dashboard.user');
+Route::get('dashboard/user/create', 'UserController@create')->name('dashboard.user.create');
+Route::get('dashboard/user/{user}', 'UserController@view')->name('dashboard.user.view');
+Route::get('dashboard/user/{user}/edit', 'UserController@edit')->name('dashboard.user.edit');
+Route::post('dashboard/user', 'UserController@store')->name('dashboard.users.store');
+Route::match(['put', 'patch'], 'dashboard/user/{user}', 'UserController@update')->name('dashboard.users.update');
+Route::delete('dashboard/user/{user}', 'UserController@destroy')->name('dashboard.users.delete');
 
 
 //vista dashboard productos
@@ -68,7 +44,7 @@ Route::get('dashboard/products/{products}', 'ProductController@view')->name('das
 Route::get('dashboard/products/{products}/edit', 'ProductController@edit')->name('dashboard.products.edit');
 Route::post('dashboard/products', 'ProductController@store')->name('dashboard.products.store');
 Route::match(['put', 'patch'], 'ProductController@update')->name('dashboard.products.update');
-Route::delete('dashboard/products/{products}', 'ProductController@delete')->name('dashboard.products.delete');
+Route::delete('dashboard/products/{products}', 'ProductController@destroy')->name('dashboard.products.delete');
 
 
 //dashboard ordenes
@@ -76,7 +52,7 @@ Route::get('dashboard/orders', 'OrderController@index')->name('dashboard.orders'
 Route::get('dashboard/orders/{order}/edit', 'OrderController@edit')->name('dashboard.orders.edit');
 Route::get('dashboard/orders/{order}', 'OrderController@view')->name('dashboard.orders.view');
 Route::match(['put', 'patch'], 'OrderController@edit')->name('dashboard.orders.update');
-Route::delete('dashboard/orders/{order}', 'OrderController@delete')->name('dashboard.products.delete');
+Route::delete('dashboard/orders/{order}', 'OrderController@destroy')->name('dashboard.products.delete');
 
 
 //dashboard de payment methods
@@ -86,7 +62,7 @@ Route::get('dashboard/payment-methods/create', 'PaymentMethodController@create')
 Route::get('dashboard/payment-methods/{paymentmethod}', 'PaymentMethodController@viex')->name('dashboard.paymentmethods.view');
 Route::post('dashboard/payment-methods', 'PaymentMethodController@store')->name('dashboard.paymentmethods.store');
 Route::match(['put', 'patch'], 'dashboard/payment-methods/{paymentmethod}', 'PaymentMethodController@update')->name('dashboard.paymentmethods.update');
-Route::delete('dashboard/payment-method/{paymentmethod}', 'PaymentMethodController@delete')->name('dashboard.paymentmethod.delete');
+Route::delete('dashboard/payment-method/{paymentmethod}', 'PaymentMethodController@destroy')->name('dashboard.paymentmethod.delete');
 
 
 //dashboard roles
@@ -116,10 +92,7 @@ Route::get('dashboard/currencies/{currency}', 'CurrencyController@view')->name('
 
 
 //vista tienda
-Route::get('store', function () {
-    return "vista store";
-    // return view('index');
-})->name('store.index');
+Route::get('store', 'StoreController@index')->name('store.index');
 
 Route::get('store/{category}', function ($category) {
     return "vista store/categoria {$category}";
@@ -127,8 +100,8 @@ Route::get('store/{category}', function ($category) {
 })->name('store.category');
 
 Route::get('store/{category}/{product}', function ($category, $product) {
-    return "vista store/categoria/producto {$category}/{$product}";
-    // return view('index');
+    //return "vista store/categoria/producto {$category}/{$product}";
+    return view('store.show');
 })->name('store.category.product');
 
 //vistas perfil

@@ -34,7 +34,7 @@ class PaymentMethodController extends Controller
         // return view('index')
     }
 
-    public function delete($paymentmethod){
+    public function destroy($paymentmethod){
         //
     }
 }

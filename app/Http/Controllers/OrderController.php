@@ -34,7 +34,7 @@ class OrderController extends Controller
         // return view('index')
     }
 
-    public function delete($order){
+    public function destroy($order){
         //
     }
 }
