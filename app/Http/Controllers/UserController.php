@@ -16,7 +16,7 @@ class UserController extends Controller
         // return view('index');
     }
 
-    public function view($user){
+    public function show($user){
         return "vista dashboard user view {$user}";
         // return view('index');
     }

@@ -16,7 +16,7 @@ class OrderController extends Controller
         // return view('index');
     }
 
-    public function view($order){
+    public function show($order){
         return "vista dashboard order view {$order}";
         // return view('index');
     }

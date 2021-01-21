@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#">Acerca de</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tienda</a>
+                        <a class="nav-link" href="{{ route('store.index')}}">Tienda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>

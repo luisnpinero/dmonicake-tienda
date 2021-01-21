@@ -22,13 +22,15 @@ class RoleController extends Controller
         // return view('index');
     }
 
-    public function view($role){
+    public function show($role){
         $role = Role::findOrFail($role);
         // $role = Role::find($role);
         // $role = DB::table('roles')->where('id', $role)->get();
         // $role = DB::table('roles')->find($role)->get();
-        dd($role);
-        return "vista dashboard role view {$role}";
+        
+        return view('dashboard.role.show')->with([
+            'role' => $role,
+        ]);
         // return view('index');
     }
 

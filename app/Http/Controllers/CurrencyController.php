@@ -16,7 +16,7 @@ class CurrencyController extends Controller
     // return view('index');
     }
 
-    public function view($currency){
+    public function show($currency){
         return "vista dashboard currency view {$currency}";
         // return view('index');
     }

@@ -16,7 +16,7 @@ class ProductController extends Controller
         // return view('index');
     }
 
-    public function view($product){
+    public function show($product){
         return "vista dashboard products view {$product}";
         // return view('index');
     }

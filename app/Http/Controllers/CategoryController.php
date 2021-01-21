@@ -16,7 +16,7 @@ class CategoryController extends Controller
     // return view('index');
     }
 
-    public function view($category){
+    public function show($category){
         return "vista dashboard category view {$category}";
         // return view('index');
     }

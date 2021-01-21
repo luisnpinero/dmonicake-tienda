@@ -16,7 +16,7 @@ class PaymentMethodController extends Controller
         // return view('index');
     }
 
-    public function view($paymentmethod){
+    public function show($paymentmethod){
         return "vista dashboard payment {$paymentmethod}";
         // return view('index');
     }
