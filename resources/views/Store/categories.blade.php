@@ -72,7 +72,7 @@
 
         <h1 class="my-4">{{ $category->name }}</h1>
         
-            @if(@empty($category))
+            @empty($category)
                 <div class="alert alert-warning">
                     La lista de categorías esta vacia
                 </div>
@@ -80,7 +80,7 @@
                 <div class="list-group">
                     <a href="{{ route('store.index')}}" class="list-group-item">Mostrar Todos los productos</a>
                     <a href="{{ route('store.categories.show', $category->name)}}" class="list-group-item">{{ $category->name }}</a>
-            @endif
+            @endempty
 
         </div>
 

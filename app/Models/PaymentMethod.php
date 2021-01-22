@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Order;
+
 class PaymentMethod extends Model
 {
     use HasFactory;
@@ -13,4 +15,8 @@ class PaymentMethod extends Model
         'status',
         'modified_by',
     ];
+
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
 }

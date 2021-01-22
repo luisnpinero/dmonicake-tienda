@@ -6,16 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Product;
-class Category extends Model
+
+class Cart extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'status',
-        'modified_by',
-    ];
 
     public function products(){
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 }

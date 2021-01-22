@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->double('total');
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->timestamps();
             $table->boolean('status');
         });

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Cost;
+
 class Currency extends Model
 {
     use HasFactory;
@@ -13,4 +15,8 @@ class Currency extends Model
         'status',
         'modified_by'
     ];
+
+    public function costs(){
+        return $this->hasMany(Cost::class);
+    }
 }

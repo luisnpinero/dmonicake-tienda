@@ -14,4 +14,8 @@ class Address extends Model
         'province',
         'country',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class);
+    }
 }
