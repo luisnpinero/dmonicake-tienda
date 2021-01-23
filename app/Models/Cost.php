@@ -15,6 +15,7 @@ class Cost extends Model
     protected $fillable = [
         'cost',
         'modified_by',
+        'currency_id',
     ];
 
     public function categories(){

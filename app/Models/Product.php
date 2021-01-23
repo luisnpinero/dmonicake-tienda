@@ -19,6 +19,7 @@ class Product extends Model
         'description',
         'stock',
         'modified_by',
+        'category_id',
     ];
 
     public function orders(){
@@ -30,7 +31,7 @@ class Product extends Model
     }
 
     public function categories(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class,'categories_products','product_id','category_id');
     }
 
     public function images(){
