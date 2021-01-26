@@ -44,14 +44,14 @@ class DatabaseSeeder extends Seeder
                 $user->save();
             });
 
-        $products = Product::factory(50)
-            ->create()
-            ->each(function($product) use($categories){
-                $category = $categories->random();
-                $category->products()->attach([
-                    $product->id
-                ]);
-            });
+        // $products = Product::factory(50)
+        //     ->create()
+        //     ->each(function($product) use($categories){
+        //         $category = $categories->random();
+        //         $category->products()->attach([
+        //             $product->id
+        //         ]);
+        //     });
 
 
     }

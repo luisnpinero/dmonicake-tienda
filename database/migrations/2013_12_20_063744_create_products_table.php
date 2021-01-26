@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->double('stock');
             $table->timestamps();
-            $table->foreignId('category_id')->constrained('categories');
             $table->integer('modified_by')->nullable()->default('1');
+            $table->boolean('status')->default(true);
         });
     }
 
