@@ -5,14 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Order;
-use App\Cart;
-use App\Category;
-use App\Image;
+use App\Models\Order;
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Image;
 
 class Product extends Model
 {
     use HasFactory;
+
+    protected $table = 'products';
+
+    protected $with = [
+        'images',
+    ];
 
     protected $fillable = [
         'name',
@@ -27,15 +33,15 @@ class Product extends Model
     }
 
     public function carts(){
-        return $this->belongsToMany(Cart::class)->withPivot('quantity');
+        return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity');
     }
 
     public function categories(){
-        $product = Product::factory()
-                    ->hasCategories(1,[
-                        'id' => '1'
-                    ])
-                    ->create();
+        // $product = Product::factory()
+        //             ->hasCategories(1,[
+        //                 'id' => '1'
+        //             ])
+        //             ->create();
 
         return $this->belongsToMany(Category::class); //,'category_product','product_id','category_id');
     }

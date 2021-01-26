@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Category;
-use App\Order;
-use App\Currency;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Currency;
 
 class Cost extends Model
 {

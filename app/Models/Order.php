@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\User;
-use App\PaymentMethod;
-use App\Product;
-use App\Cost;
+use App\Models\User;
+use App\Models\PaymentMethod;
+use App\Models\Product;
+use App\Models\Cost;
 
 class Order extends Model
 {
@@ -18,6 +18,8 @@ class Order extends Model
         'status',
         'user_id',
         'payment_method_id',
+        'created_at',
+        'updated_at',
     ];
 
     public function user(){

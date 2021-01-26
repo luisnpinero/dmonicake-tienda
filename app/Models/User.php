@@ -10,10 +10,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-use App\Address;
-use App\Order;
-use App\Role;
-use App\Image;
+use App\Models\Address;
+use App\Models\Order;
+use App\Models\Role;
+use App\Models\Image;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -69,13 +69,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 
     public function address(){
         return $this->belongsTo(Address::class);
-    }
-
-    public function orders(){
-        return $this->hasMany(Order::class);
     }
 
     public function role(){
