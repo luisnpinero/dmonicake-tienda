@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Currency;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\CategoryProduct;
 use App\Models\Cost;
 use App\Models\PaymentMethod;
 use App\Models\Product;
@@ -13,6 +14,7 @@ use App\Models\Role;
 use App\Models\Image;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\CostOrder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -64,7 +66,7 @@ class DatabaseSeeder extends Seeder
 
         $orders = Order::factory(25)
             ->make()
-            ->each(function ($order) use ($users,$paymentmethods) {
+            ->each(function ($order) use ($users,$paymentmethods,$costs) {
                 $order->user_id = $users->random()->id;
                 $order->payment_method_id = $paymentmethods->random()->id;
                 $order->save();
@@ -72,9 +74,38 @@ class DatabaseSeeder extends Seeder
 
         $products = Product::factory(50)
             ->create()
-            ->each(function($product){
+            ->each(function($product) use($carts, $orders){
+                $cart = $carts->random();
+                $cart->products()->attach([
+                    $product->id => ['quantity' => mt_rand(1,3)]
+                ]);
+
+                $order = $orders->random();
+                $order->products()->attach([
+                    $product->id => ['quantity' => mt_rand(1,3)]
+                ]);
+
                 $images = Image::factory(mt_rand(2,4))->make();
                 $product->images()->saveMany($images);
             });
+
+        foreach($costs as $cost){
+            foreach($orders as $order){
+                CostOrder::firstOrCreate([
+                    'cost_id'=>$cost->id,
+                    'order_id'=>$order->id,
+                ]);
+            }
+        };
+
+        foreach($products as $product){
+            foreach($categories as $category){
+                CategoryProduct::firstOrCreate([
+                    'product_id'=>$product->id,
+                    'category_id'=>$category->id,
+                ]);
+            }
+        };
+
     }
 }

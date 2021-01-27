@@ -16,6 +16,7 @@ class CreateCostOrder extends Migration
         Schema::create('cost_order', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('cost_id')->constrained('costs');
+            $table->primary(['order_id', 'cost_id']);
         });
     }
 
