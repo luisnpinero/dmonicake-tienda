@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
     public function index(){
         $categories = Category::all();
+        $products = Product::paginate(12);
         return view('store.index')->with([
-            'categories' => $categories
+            'categories' => $categories,
+            'products' => $products
         ]);
     }
 
@@ -19,9 +22,13 @@ class StoreController extends Controller
         // return view('index');
     }
 
-    public function show($user){
-        return "vista dashboard user view {$user}";
-        // return view('index');
+    public function show_product($product){
+        //$category = Category::where('name',$category)->first();
+        $product = Product::where('name',$product)->first();
+        //return "vista dashboard user view {$category} {$product}";
+        return view('store.show')->with([
+            'product' => $product,
+        ]);
     }
 
     public function categories($category){
