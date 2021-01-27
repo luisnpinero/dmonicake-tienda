@@ -97,10 +97,7 @@ Route::get('store', 'StoreController@index')->name('store.index');
 
 Route::get('store/{category}', 'StoreController@categories')->name('store.categories.show');
 
-Route::get('store/{category}/{product}', function ($category, $product) {
-    //return "vista store/categoria/producto {$category}/{$product}";
-    return view('store.show');
-})->name('store.category.product');
+Route::get('store/product/{product}', 'StoreController@product_show')->name('store.product.show');
 
 //vistas perfil
 Route::get('profile/{user}', function ($user) {
