@@ -69,24 +69,12 @@ class DatabaseSeeder extends Seeder
                 $order->payment_method_id = $paymentmethods->random()->id;
                 $order->save();
             });
-        
-        // $products = Product::factory(50)
-        //     ->create()
-        //     ->each(function($product) use ($carts, $orders){
-        //         //ordenes
-        //         $order = $orders->random();
-    
-        //         $order->products()->attach([
-        //             $product->id => ['quantity' => mt_rand(1,3)]
-        //         ]);
 
-        //         //Carrito
-        //         $cart = $carts->random();
-    
-        //         $cart->products()->attach([
-        //             $product->id => ['quantity' => mt_rand(1,3)]
-        //         ]);
-        //     });
-
+        $products = Product::factory(50)
+            ->create()
+            ->each(function($product){
+                $images = Image::factory(mt_rand(2,4))->make();
+                $product->images()->saveMany($images);
+            });
     }
 }
