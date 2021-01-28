@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Currency;
+use App\Models\Product;
 
 class Cost extends Model
 {
@@ -17,6 +18,10 @@ class Cost extends Model
         'modified_by',
         'currency_id',
     ];
+
+    public function product(){
+        return $this->hasOne(Product::class);
+    }
 
     public function categories(){
         return $this->belongsToMany(Category::class);

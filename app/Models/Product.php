@@ -25,8 +25,13 @@ class Product extends Model
         'description',
         'stock',
         'modified_by',
+        'cost_id',
         'status',
     ];
+
+    public function cost(){
+        return $this->belongsTo(Cost::class);
+    }
 
     public function orders(){
         return $this->belongsToMany(Order::class)->withPivot('quantity');
@@ -37,12 +42,6 @@ class Product extends Model
     }
 
     public function categories(){
-        // $product = Product::factory()
-        //             ->hasCategories(1,[
-        //                 'id' => '1'
-        //             ])
-        //             ->create();
-
         return $this->belongsToMany(Category::class); //,'category_product','product_id','category_id');
     }
 

@@ -40,12 +40,13 @@ class DatabaseSeeder extends Seeder
         $costs = Cost::factory(10)
             ->make()
             ->each(function($cost) use($currencies){
-                $cost->currency_id = $currencies->random()->id;
+                $cost->currency_id = $currencies->find(3)->id;
                 $cost->save();
             });
 
         //seeder 1-n entre user y rol
         //seeder 1-1 entre user y address
+        
         $users = User::factory(10)
             ->make()
             ->each(function($user) use ($roles){
@@ -66,14 +67,19 @@ class DatabaseSeeder extends Seeder
 
         $orders = Order::factory(25)
             ->make()
-            ->each(function ($order) use ($users,$paymentmethods,$costs) {
+            ->each(function ($order) use ($users,$paymentmethods) {
                 $order->user_id = $users->random()->id;
                 $order->payment_method_id = $paymentmethods->random()->id;
                 $order->save();
             });
 
         $products = Product::factory(50)
-            ->create()
+            ->make()
+            ->each(function($product) use($costs){
+                $product->cost_id = $costs->random()->id;
+                $product->save();
+            })
+
             ->each(function($product) use($carts, $orders){
                 $cart = $carts->random();
                 $cart->products()->attach([
@@ -99,7 +105,8 @@ class DatabaseSeeder extends Seeder
         //};
 
         foreach($products as $product){
-            $elements = $categories->random(mt_rand(1, $categories->count()));
+            //$elements = $categories->random(mt_rand(1, $categories->count()));
+            $elements = $categories->random(mt_rand(1, 2));
             foreach($elements as $element){
                 CategoryProduct::firstOrCreate([
                     'product_id'=>$product->id,

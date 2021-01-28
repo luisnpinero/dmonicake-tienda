@@ -11,11 +11,9 @@
     <div class="row">
 
       <div class="col-lg-3">
-        <h1 class="my-4">Shop Name</h1>
+        <h1 class="my-4">{{$product->name}}</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item active">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
+          <a href="#" class="list-group-item">Comprar</a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -29,6 +27,13 @@
             <h4>$24.99</h4>
             <p class="card-text">{{ $product->description}}</p>
           </div>
+          <div class="card-footer">
+            @if ($product->stock < 1)
+                    AGOTADO  
+                  @else
+                    Stock: {{$product->stock}}  
+                  @endif  
+          </div>
         </div>
         <!-- /.card -->
         <!-- /.card -->
@@ -40,14 +45,6 @@
 
   </div>
   <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 @endsection
 
 @section('script')

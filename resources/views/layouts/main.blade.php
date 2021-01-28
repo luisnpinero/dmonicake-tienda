@@ -20,8 +20,9 @@
     </head>
 
     <body class="antialiased">
-
         <!-- Navigation -->
+        <div class="min-vh-100">
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"></a>
@@ -66,9 +67,10 @@
         </nav>
 
         @yield('content')
-
+        
+    </div>
         <!-- Footer -->
-        <footer class="py-5 bg-dark">
+        <footer class="mt-4 py-4 bg-dark">
             <div class="container">
                 <p class="m-0 text-center text-white">Copyright &copy; Luis Piñero 2020</p>
             </div>
