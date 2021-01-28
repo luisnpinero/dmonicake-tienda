@@ -89,20 +89,21 @@ class DatabaseSeeder extends Seeder
                 $product->images()->saveMany($images);
             });
 
-        foreach($costs as $cost){
+        //foreach($costs as $cost){
             foreach($orders as $order){
                 CostOrder::firstOrCreate([
-                    'cost_id'=>$cost->id,
+                    'cost_id'=>$costs->first()->id,
                     'order_id'=>$order->id,
                 ]);
             }
-        };
+        //};
 
         foreach($products as $product){
-            foreach($categories as $category){
+            $elements = $categories->random(mt_rand(1, $categories->count()));
+            foreach($elements as $element){
                 CategoryProduct::firstOrCreate([
                     'product_id'=>$product->id,
-                    'category_id'=>$category->id,
+                    'category_id'=>$element->id,
                 ]);
             }
         };
