@@ -119,3 +119,7 @@ Route::get('checkout', function () {
     return 'vista confirmar compra';
     // return view('index');
 })->name('checkout.index');
+
+//rutas auth
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
