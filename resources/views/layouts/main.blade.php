@@ -32,18 +32,18 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="{{ url('/') }}">Home
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
+                        <a class="nav-link" href="{{ url('aboutus')}}">Acerca de</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('store.index')}}">Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="{{url('contact')}}">Contacto</a>
                     </li>
                     @if (Route::has('login'))
                         @auth
@@ -72,7 +72,7 @@
         <!-- Footer -->
         <footer class="mt-4 py-4 bg-dark">
             <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Luis Piñero 2020</p>
+                <p class="m-0 text-center text-white">Copyright &copy; Luis Piñero 2021</p>
             </div>
         <!-- /.container -->
         </footer>

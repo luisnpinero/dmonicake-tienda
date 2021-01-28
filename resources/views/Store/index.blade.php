@@ -75,11 +75,11 @@
                 <a href="{{ route('store.product.show', $product->name)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                 <div class="card-body mb-6">
                   <h4 class="card-title">
-                    <a href="{{ route('store.product.show', $product->name)}}">{{ $product -> name}}</a>
+                    <a href="{{ route('store.product.show', $product->name)}}">{{ $product->name}}</a>
                   </h4>
                   <h5>{{$currencies->find(1)->name}} {{$costs->find($product->cost_id)->cost}}</h5> 
                   {{-- corregir aqui --}}
-                  <p class="card-text text-wrap text-truncate">{{$product -> description}}</p>
+                  <p class="card-text text-wrap text-truncate">{{$product->description}}</p>
                 </div>
                 <div class="card-footer">
                   @if ($product->stock < 1)
@@ -91,7 +91,8 @@
               </div>
             </div>
             @endforeach
-            {{ $products->links() }}
+
+            {{ $products->links() }}                
 
           @endif
 

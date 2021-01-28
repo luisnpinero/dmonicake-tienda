@@ -34,28 +34,26 @@ class StoreController extends Controller
     public function show_product($product){
         //$category = Category::where('name',$category)->first();
         $product = Product::where('name',$product)->first();
-        $costs = Cost::all();
-        $currencies = Currency::all();
+        $cost = Cost::find($product->cost_id)->first();
+        $currency = Currency::find($cost->currency_id)->first();
         return view('store.show')->with([
             'product' => $product,
+            'cost' => $cost,
+            'currency' => $currency,
         ]);
     }
 
     public function categories($category){
-        $category = Category::where('name', $category)->get('id');
-        $pivot = CategoryProduct::where('category_id',2)->get();
-        // $pivot->toArray();
-        dd($category);
-        
-        $products = DB::table('products')
-        ->where('id', $pivot->product_id);
-        //$products = Product::all();
-        //$products = each(function())
-        //dd($products);
-        
-        // dd($category);
+        $category = Category::where('name', $category)->first();
+        $products = Product::where('category_id',$category->id)->get();
+        $costs = Cost::all();
+        $currencies = Currency::all();
+
         return view('store.categories')->with([
             'category' => $category,
+            'products' => $products,
+            'costs' => $costs,
+            'currencies' => $currencies,
         ]);
     }
 

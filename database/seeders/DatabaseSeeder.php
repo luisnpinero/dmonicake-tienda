@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         
         $paymentmethods = PaymentMethod::factory(5)->create();
 
-        $categories = Category::factory(5)->create();
+        $categories = Category::factory(6)->create();
         
         $currencies = Currency::factory(1)->create();
 

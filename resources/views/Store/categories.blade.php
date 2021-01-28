@@ -1,68 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="Luis Piñero">
-        <title>DMonicake Fit&Fat</title>
-        <link rel="icon" href="https://i.postimg.cc/Gtrdvvrj/2.png" type="image/png">
+@extends('layouts.main')
+@section('title')
+    {{ $category->name}}
+@endsection
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
-        <!-- Styles -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{  asset('css/mystyles.css')}}" type="text/css">
-
-</head>
-
-<body class="antialiased">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.index')}}">Tienda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-                @if (Route::has('login'))
-                    @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Tienda</a>
-                    </li>
-                    @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                    </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrate</a></li>
-                        </li>
-                        @endif
-                    @endauth
-                @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+@section('content')
   <!-- Page Content -->
   <div class="container mt-5">
 
@@ -117,52 +58,40 @@
         </div>
 
         <div class="row">
-
+          
           @if(@empty($products))
-          <div class="alert alert-warning">
-              La lista de productos esta vacia
-          </div>
-        @else
-          @foreach ($products as $product)
+            <div class="alert alert-warning">
+                La lista de productos esta vacia
+            </div>
+          @else
+          @foreach($products as $product)
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
+                <a href="{{ route('store.product.show', $product->name)}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body mb-6">
                   <h4 class="card-title">
-                    <a href="{{ route('store.product.show', $product->name)}}">{{$product->name}}</a>
+                    <a href="{{ route('store.product.show', $product->name)}}">{{ $product->name}}</a>
                   </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">{{$product->description}}</p>
+                  <h5>{{$currencies->find(1)->name}} {{$costs->find($product->cost_id)->cost}}</h5> 
+                  {{-- corregir aqui --}}
+                  <p class="card-text text-wrap text-truncate">{{$product->description}}</p>
+                </div>
+                <div class="card-footer">
+                  @if ($product->stock < 1)
+                    AGOTADO  
+                  @else
+                    Stock: {{$product->stock}}  
+                  @endif                       
                 </div>
               </div>
             </div>
-          @endforeach
-        @endif
+            @endforeach
+          @endif
 
         </div>
-        <!-- /.row -->
-
-      </div>
-      <!-- /.col-lg-9 -->
-
-    </div>
     <!-- /.row -->
-
+      </div>
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+@endsection

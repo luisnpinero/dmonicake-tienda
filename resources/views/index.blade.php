@@ -23,7 +23,7 @@
         <hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-        <a class="btn btn-primary btn-lg" href="#">Conoce más &raquo;</a>
+        <a class="btn btn-primary btn-lg" href="/aboutus">Conoce más &raquo;</a>
       </div>
     </div>
   <!-- /.row -->
@@ -39,7 +39,7 @@
           <p class="card-text">Haz click para comprar</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Añadir a Carrito</a>
+          <a href="#" class="btn btn-primary">Ir a Tienda &raquo;</a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Añadir a Carrito</a>
+          <a href="#" class="btn btn-primary">Ir a Tienda &raquo;</a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Añadir a Carrito</a>
+          <a href="#" class="btn btn-primary">Ir a Tienda &raquo;</a>
         </div>
       </div>
     </div>

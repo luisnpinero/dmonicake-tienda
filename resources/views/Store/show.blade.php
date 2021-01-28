@@ -24,7 +24,7 @@
           <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
           <div class="card-body">
             <h3 class="card-title">{{$product->name}}</h3>
-            <h4>{{$currencies->find(1)->name}} {{$costs->find($product->cost_id)->cost}}</h4>
+            <h4>{{$currency->find(1)->name}} {{$cost->find($product->cost_id)->cost}}</h4>
             <p class="card-text">{{ $product->description}}</p>
           </div>
           <div class="card-footer">
