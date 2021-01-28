@@ -22,7 +22,8 @@ class CurrencyFactory extends Factory
     public function definition()
     {
         return [
-            'name' =>$this->faker->unique()->randomElement(['USD','VEF','PEN']),
+            // 'name' =>$this->faker->unique()->randomElement(['USD','VEF','PEN']),
+            'name' =>$this->faker->unique()->randomElement(['USD']),
             'status' =>$this->faker->boolean($chanceOfGettingTrue = 99),
             'modified_by' =>$this->faker->randomDigitNotNull,
         ];

@@ -33,8 +33,9 @@ class StoreController extends Controller
 
     public function show_product($product){
         //$category = Category::where('name',$category)->first();
-        $product = Product::where('name',$product);
-        //return "vista dashboard user view {$category} {$product}";
+        $product = Product::where('name',$product)->first();
+        $costs = Cost::all();
+        $currencies = Currency::all();
         return view('store.show')->with([
             'product' => $product,
         ]);

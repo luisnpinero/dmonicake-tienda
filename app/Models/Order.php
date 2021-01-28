@@ -34,7 +34,8 @@ class Order extends Model
         return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
     }
     
-    public function cost(){
-        return $this->belongsToMany(Cost::class);
-    }  
+    // relacion necesaria para la relacion 1-n y poder hacer cambios de precios sin alterar las boletas/recibos de pago
+    // public function cost(){
+    //     return $this->belongsToMany(Cost::class);
+    // }  
 }

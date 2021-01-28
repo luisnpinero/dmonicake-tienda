@@ -6,7 +6,6 @@ use App\Models\Address;
 use App\Models\Currency;
 use App\Models\Category;
 use App\Models\Cart;
-use App\Models\CategoryProduct;
 use App\Models\Cost;
 use App\Models\PaymentMethod;
 use App\Models\Product;
@@ -14,7 +13,6 @@ use App\Models\Role;
 use App\Models\Image;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\CostOrder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,25 +26,24 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $roles = Role::factory(3)->create();
+        $roles = Role::factory(2)->create();
         
         $paymentmethods = PaymentMethod::factory(5)->create();
 
         $categories = Category::factory(5)->create();
         
-        $currencies = Currency::factory(3)->create();
+        $currencies = Currency::factory(1)->create();
 
         // relcion 1-N
         $costs = Cost::factory(10)
             ->make()
             ->each(function($cost) use($currencies){
-                $cost->currency_id = $currencies->find(3)->id;
+                $cost->currency_id = $currencies->find(1)->id;
                 $cost->save();
             });
 
         //seeder 1-n entre user y rol
-        //seeder 1-1 entre user y address
-        
+        //seeder 1-1 entre user y address        
         $users = User::factory(10)
             ->make()
             ->each(function($user) use ($roles){
@@ -59,7 +56,6 @@ class DatabaseSeeder extends Seeder
                 $image = Image::factory()
                     ->user()
                     ->make();
-
                 $user->image()->save($image);
             });
 
@@ -75,8 +71,9 @@ class DatabaseSeeder extends Seeder
 
         $products = Product::factory(50)
             ->make()
-            ->each(function($product) use($costs){
+            ->each(function($product) use($costs, $categories){
                 $product->cost_id = $costs->random()->id;
+                $product->category_id = $categories->random()->id;
                 $product->save();
             })
 
@@ -94,26 +91,5 @@ class DatabaseSeeder extends Seeder
                 $images = Image::factory(mt_rand(2,4))->make();
                 $product->images()->saveMany($images);
             });
-
-        //foreach($costs as $cost){
-            foreach($orders as $order){
-                CostOrder::firstOrCreate([
-                    'cost_id'=>$costs->first()->id,
-                    'order_id'=>$order->id,
-                ]);
-            }
-        //};
-
-        foreach($products as $product){
-            //$elements = $categories->random(mt_rand(1, $categories->count()));
-            $elements = $categories->random(mt_rand(1, 2));
-            foreach($elements as $element){
-                CategoryProduct::firstOrCreate([
-                    'product_id'=>$product->id,
-                    'category_id'=>$element->id,
-                ]);
-            }
-        };
-
     }
 }
